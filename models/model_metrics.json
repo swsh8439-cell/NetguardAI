@@ -1,0 +1,165 @@
+{
+  "accuracy": 99.6,
+  "precision": 99.6,
+  "recall": 99.6,
+  "f1_score": 99.6,
+  "roc_auc": 1.0,
+  "confusion_matrix": {
+    "true_normal": 2198,
+    "false_positive": 2,
+    "false_negative": 13,
+    "true_positive": 1787
+  },
+  "roc_curve": [
+    {
+      "fpr": 0.0,
+      "tpr": 0.0
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.8928
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.9244
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.9328
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.9472
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.9594
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.9906
+    },
+    {
+      "fpr": 0.0018,
+      "tpr": 0.9944
+    },
+    {
+      "fpr": 0.0109,
+      "tpr": 0.9967
+    },
+    {
+      "fpr": 0.0241,
+      "tpr": 0.9978
+    },
+    {
+      "fpr": 0.0318,
+      "tpr": 0.9989
+    },
+    {
+      "fpr": 0.0427,
+      "tpr": 0.9989
+    },
+    {
+      "fpr": 0.0568,
+      "tpr": 0.9994
+    },
+    {
+      "fpr": 0.0682,
+      "tpr": 0.9994
+    },
+    {
+      "fpr": 0.0736,
+      "tpr": 0.9994
+    },
+    {
+      "fpr": 0.0836,
+      "tpr": 0.9994
+    },
+    {
+      "fpr": 0.0991,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1359,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1414,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1518,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1586,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1682,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.1809,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.195,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 1.0,
+      "tpr": 1.0
+    }
+  ],
+  "feature_importances": [
+    {
+      "feature": "total_fwd_packets",
+      "importance": 0.2738
+    },
+    {
+      "feature": "fwd_packet_length_mean",
+      "importance": 0.1757
+    },
+    {
+      "feature": "packet_length_std",
+      "importance": 0.131
+    },
+    {
+      "feature": "total_backward_packets",
+      "importance": 0.1205
+    },
+    {
+      "feature": "flow_bytes_s",
+      "importance": 0.1176
+    },
+    {
+      "feature": "flow_packets_s",
+      "importance": 0.0774
+    },
+    {
+      "feature": "destination_port",
+      "importance": 0.0561
+    },
+    {
+      "feature": "flow_duration",
+      "importance": 0.0275
+    },
+    {
+      "feature": "ack_flag_count",
+      "importance": 0.0204
+    },
+    {
+      "feature": "syn_flag_count",
+      "importance": 0.0
+    }
+  ],
+  "classes": {
+    "0": "Normal",
+    "1": "DoS/DDoS",
+    "2": "Port Scan",
+    "3": "Brute Force",
+    "4": "Web Attack",
+    "5": "Botnet"
+  }
+}

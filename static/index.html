@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetGuard AI - ML-Based Intrusion Detection System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+
+  <!-- ========================================================================= -->
+  <!-- 3. LANDING PAGE (Initial View - Before Login)                             -->
+  <!-- ========================================================================= -->
+  <section id="view-landing" class="page-view active">
+    <!-- Landing Navigation -->
+    <nav class="landing-navbar">
+      <div class="nav-container">
+        <div class="brand-logo" onclick="switchView('landing')">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255, 20, 117, 0.2)" stroke="#FF1475"/>
+              <circle cx="12" cy="11" r="2" fill="#FF1475"/>
+              <path d="M12 13v3" stroke="#FF1475" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NetGuard <span class="accent-text">AI</span></span>
+            <span class="brand-sub">Intrusion Detection System</span>
+          </div>
+        </div>
+
+        <ul class="landing-nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Top Right Corner: Login & Register Buttons (Required by Prompt) -->
+        <div class="landing-auth-buttons">
+          <button class="btn btn-outline" onclick="switchView('login')">Login</button>
+          <button class="btn btn-primary" onclick="switchView('register')">Register</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="landing-hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>Next-Gen Cybersecurity Powered by Random Forest</span>
+          </div>
+          <h1 class="hero-title">
+            AI-Powered<br>
+            Intrusion Detection<br>
+            for a <span class="highlight-magenta">Safer Tomorrow.</span>
+          </h1>
+          <p class="hero-description">
+            <strong>Detect. Analyse. Prevent.</strong> Using Machine Learning to identify and stop cyber threats in real-time.
+            Continuous monitoring of packet flows with 99% classification accuracy against CIC-IDS2017 attack vectors.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" onclick="loginDirectly()">
+              <span>Get Started</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <a href="#features" class="btn btn-secondary btn-lg">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Glowing Cyber Shield Visual -->
+        <div class="hero-visual">
+          <div class="cyber-radar">
+            <div class="radar-ring ring-1"></div>
+            <div class="radar-ring ring-2"></div>
+            <div class="radar-ring ring-3"></div>
+            <div class="radar-sweep"></div>
+
+            <!-- Central Glowing Cyber Shield -->
+            <div class="shield-container">
+              <div class="shield-halo"></div>
+              <svg class="shield-svg" viewBox="0 0 200 240" width="190" height="228">
+                <defs>
+                  <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF1475" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#7928CA" stop-opacity="0.4"/>
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path d="M100 10 L180 45 V125 C180 175 100 220 100 220 C100 220 20 175 20 125 V45 Z" 
+                      fill="url(#shieldGrad)" stroke="#FF1475" stroke-width="3" filter="url(#glow)"/>
+                <!-- Padlock Icon inside Shield -->
+                <rect x="78" y="105" width="44" height="36" rx="6" fill="#111827" stroke="#FF1475" stroke-width="2.5"/>
+                <path d="M86 105 V87 C86 79 93 72 100 72 C107 72 114 79 114 87 V105" fill="none" stroke="#FF1475" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="100" cy="120" r="3" fill="#FF1475"/>
+                <path d="M100 123 V131" stroke="#FF1475" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Orbiting Feature Badges -->
+            <div class="orbit-badge badge-top">
+              <span class="badge-icon">📡</span>
+              <span>Real-time Monitoring</span>
+            </div>
+            <div class="orbit-badge badge-right">
+              <span class="badge-icon">🧠</span>
+              <span>Machine Learning</span>
+            </div>
+            <div class="orbit-badge badge-bottom">
+              <span class="badge-icon">🛡️</span>
+              <span>Threat Detection</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Hero Stat Strip -->
+      <div class="hero-stats-bar">
+        <div class="stat-pill">
+          <div class="stat-num highlight-magenta">99%</div>
+          <div class="stat-label">Detection Accuracy</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Attack Types</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">Real-time</div>
+          <div class="stat-label">Monitoring</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">Secure</div>
+          <div class="stat-label">Digital World</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="landing-section">
+      <div class="section-header">
+        <span class="section-tag">Key Capabilities</span>
+        <h2>End-to-End Threat Detection Engine</h2>
+        <p>Integrated pipeline trained on 15,000+ CIC-IDS2017 flows to safeguard enterprise networks.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(255, 20, 117, 0.1); color: #FF1475;">⚡</div>
+          <h3>Continuous Flow Analysis</h3>
+          <p>Inspects packet count, flow duration, bytes/sec, and TCP flags with sub-millisecond classification latency.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(0, 245, 255, 0.1); color: #00F5FF;">🎯</div>
+          <h3>Multi-Class Attack Detection</h3>
+          <p>Identifies DoS/DDoS, Port Scans, Brute Force attacks, Web Injections, and Botnet C2 beacon signals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(16, 185, 129, 0.1); color: #10B981;">📊</div>
+          <h3>Comprehensive Analytics</h3>
+          <p>Detailed confusion matrix, ROC curves, 7-day attack distribution charts, and downloadable compliance reports.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="landing-section bg-card">
+      <div class="section-header">
+        <span class="section-tag">System Architecture</span>
+        <h2>From Raw Packets to Real-Time Mitigation</h2>
+      </div>
+      <div class="architecture-diagram">
+        <div class="arch-step">
+          <div class="arch-icon">🌐</div>
+          <h4>Network Traffic</h4>
+          <p>Raw flow capture (IP, Ports, Protocols)</p>
+        </div>
+        <div class="arch-arrow">➔</div>
+        <div class="arch-step">
+          <div class="arch-icon">⚙️</div>
+          <h4>Preprocessing</h4>
+          <p>Scaling & feature selection</p>
+        </div>
+        <div class="arch-arrow">➔</div>
+        <div class="arch-step highlight-step">
+          <div class="arch-icon">🌲</div>
+          <h4>Random Forest</h4>
+          <p>CIC-IDS2017 ML Classifier</p>
+        </div>
+        <div class="arch-arrow">➔</div>
+        <div class="arch-step">
+          <div class="arch-icon">🚨</div>
+          <h4>Alert & Action</h4>
+          <p>Auto-Block or Allow flow</p>
+        </div>
+        <div class="arch-arrow">➔</div>
+        <div class="arch-step">
+          <div class="arch-icon">📈</div>
+          <h4>Dashboard</h4>
+          <p>Monitoring & telemetry</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="landing-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-icon small">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FF1475" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <span>NetGuard AI</span>
+          </div>
+          <p>Detect Today, Prevent Tomorrow. Built with Machine Learning and modern cybersecurity engineering.</p>
+        </div>
+        <div class="footer-copy">
+          © 2025-2026 NetGuard AI. All rights reserved. Secure Networks. Safer Tomorrows.
+        </div>
+      </div>
+    </footer>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 1. LOGIN PAGE (Screen 1 in Mockup)                                       -->
+  <!-- ========================================================================= -->
+  <section id="view-login" class="page-view auth-page">
+    <div class="auth-container">
+      <!-- Left Cyber Banner -->
+      <div class="auth-banner">
+        <div class="auth-banner-content">
+          <div class="brand-logo large">
+            <div class="logo-icon large">
+              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#FF1475" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255, 20, 117, 0.25)"/>
+                <circle cx="12" cy="11" r="2" fill="#FF1475"/>
+                <path d="M12 13v3" stroke="#FF1475"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">NetGuard <span class="accent-text">AI</span></span>
+              <span class="brand-sub">Intrusion Detection System</span>
+            </div>
+          </div>
+          <h2 class="auth-banner-title">Detect Today, Prevent Tomorrow.</h2>
+          <p class="auth-banner-desc">AI-powered intrusion detection for safer digital world.</p>
+        </div>
+        <div class="cyber-wave-bg"></div>
+      </div>
+
+      <!-- Right Form Card -->
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Welcome Back!</h2>
+          <p>Login for your account to continue</p>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label><span class="icon">✉️</span> Email address</label>
+            <input type="email" id="login-email" class="form-control" value="shreya@example.com" required placeholder="name@domain.com">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label><span class="icon">🔒</span> Password</label>
+              <a href="javascript:void(0)" class="form-link" onclick="alert('Password reset link sent to registered email!')">Forgot Password?</a>
+            </div>
+            <input type="password" id="login-password" class="form-control" value="••••••••••••" required placeholder="Enter password">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="social-login-grid">
+            <button type="button" class="btn btn-social" onclick="loginDirectly()">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+              <span>Continue with Google</span>
+            </button>
+            <button type="button" class="btn btn-social" onclick="loginDirectly()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>Continue with GitHub</span>
+            </button>
+          </div>
+
+          <div class="auth-footer-text">
+            Don't have an account? <a href="javascript:void(0)" onclick="switchView('register')">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. REGISTER PAGE (Screen 2 in Mockup)                                    -->
+  <!-- ========================================================================= -->
+  <section id="view-register" class="page-view auth-page">
+    <div class="auth-container">
+      <!-- Left Cyber Banner -->
+      <div class="auth-banner">
+        <div class="auth-banner-content">
+          <div class="brand-logo large">
+            <div class="logo-icon large">
+              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#FF1475" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255, 20, 117, 0.25)"/>
+                <circle cx="12" cy="11" r="2" fill="#FF1475"/>
+                <path d="M12 13v3" stroke="#FF1475"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">NetGuard <span class="accent-text">AI</span></span>
+              <span class="brand-sub">Intrusion Detection System</span>
+            </div>
+          </div>
+          <h2 class="auth-banner-title">Secure Networks. Safer Tomorrows.</h2>
+          <p class="auth-banner-desc">Join us in building a safer cyberspace with the power of Machine Learning.</p>
+        </div>
+        <div class="cyber-wave-bg"></div>
+      </div>
+
+      <!-- Right Form Card -->
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Create Account</h2>
+          <p>Sign up to get started</p>
+        </div>
+
+        <form id="register-form" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label><span class="icon">👤</span> Full Name</label>
+            <input type="text" id="reg-name" class="form-control" required placeholder="e.g. John Doe">
+          </div>
+
+          <div class="form-group">
+            <label><span class="icon">✉️</span> Email address</label>
+            <input type="email" id="reg-email" class="form-control" required placeholder="name@example.com">
+          </div>
+
+          <div class="form-group">
+            <label><span class="icon">🔒</span> Password</label>
+            <input type="password" id="reg-pass" class="form-control" required placeholder="Create strong password">
+          </div>
+
+          <div class="form-group">
+            <label><span class="icon">🛡️</span> Confirm Password</label>
+            <input type="password" id="reg-pass2" class="form-control" required placeholder="Confirm password">
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="reg-terms" required>
+            <label for="reg-terms">I agree to the <a href="javascript:void(0)" class="form-link">Terms & Conditions</a></label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+          <div class="auth-footer-text">
+            Already have an account? <a href="javascript:void(0)" onclick="switchView('login')">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- AUTHENTICATED PLATFORM SHELL (Screens 4 - 11)                             -->
+  <!-- ========================================================================= -->
+  <div id="view-app" class="app-layout" style="display: none;">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo" onclick="switchView('landing')">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FF1475" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255, 20, 117, 0.25)"/>
+              <circle cx="12" cy="11" r="2" fill="#FF1475"/>
+              <path d="M12 13v3" stroke="#FF1475"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NetGuard <span class="accent-text">AI</span></span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="nav-item active" onclick="switchAppTab('dashboard')" data-tab="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('live-traffic')" data-tab="live-traffic">
+          <span class="nav-icon">📡</span>
+          <span class="nav-label">Live Traffic</span>
+          <span class="live-dot-mini"></span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('detection-logs')" data-tab="detection-logs">
+          <span class="nav-icon">📜</span>
+          <span class="nav-label">Detection Logs</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('attack-analysis')" data-tab="attack-analysis">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">Attack Analysis</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('model-performance')" data-tab="model-performance">
+          <span class="nav-icon">🎯</span>
+          <span class="nav-label">Model Performance</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('upload-data')" data-tab="upload-data">
+          <span class="nav-icon">📤</span>
+          <span class="nav-label">Upload Data</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('reports')" data-tab="reports">
+          <span class="nav-icon">📑</span>
+          <span class="nav-label">Reports</span>
+        </button>
+        <button class="nav-item" onclick="switchAppTab('settings')" data-tab="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-tagline">
+          <strong>Secure Networks.</strong><br>
+          Safer Tomorrows.
+        </div>
+        <button class="btn btn-logout-sm" onclick="openLogoutModal()">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <!-- Top Application Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
+          <div class="greeting-box">
+            <h2 id="user-greeting-text">Welcome, Shreya!</h2>
+            <p>Here's what's happening with your network today.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Top Bar Upload Data Option -->
+          <div class="topbar-upload-wrapper">
+            <button class="btn btn-upload-topbar" onclick="handleTopbarUploadClick()" title="Upload CSV Network Traffic Data">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span>Upload Data</span>
+            </button>
+            <button class="btn btn-upload-caret" onclick="toggleUploadDropdown(event)" title="Upload Options">
+              ▼
+            </button>
+            <div id="topbar-upload-dropdown" class="dropdown-panel upload-dropdown">
+              <button class="dropdown-action" onclick="triggerTopbarFilePicker()">
+                📁 Browse &amp; Upload CSV
+              </button>
+              <button class="dropdown-action" onclick="loadSampleDatasetFromTopbar()">
+                ✨ Load Sample CIC-IDS2017
+              </button>
+              <button class="dropdown-action" onclick="handleTopbarUploadClick()">
+                🔍 Open Upload Module
+              </button>
+            </div>
+            <input type="file" id="topbar-csv-input" accept=".csv" style="display:none;" onchange="handleTopbarFileSelect(this.files[0])">
+          </div>
+
+          <div class="topbar-badge">
+            <span class="badge-text">"Detect Today, Prevent Tomorrow"</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <div class="notification-wrapper">
+            <button class="btn-icon" onclick="toggleNotificationDropdown()" title="Notifications">
+              🔔
+              <span class="notification-indicator"></span>
+            </button>
+            <div id="notification-dropdown" class="dropdown-panel">
+              <div class="dropdown-header">
+                <h4>Recent Security Alerts</h4>
+                <span class="badge badge-danger">3 New</span>
+              </div>
+              <div class="dropdown-body">
+                <div class="notif-item unread">
+                  <span class="notif-icon">🚨</span>
+                  <div class="notif-text">
+                    <strong>DoS Attack Blocked</strong>
+                    <small>203.45.12.8 · Port 80 · 2 mins ago</small>
+                  </div>
+                </div>
+                <div class="notif-item unread">
+                  <span class="notif-icon">⚠️</span>
+                  <div class="notif-text">
+                    <strong>Port Scan Probing</strong>
+                    <small>185.67.33.21 · 5 mins ago</small>
+                  </div>
+                </div>
+                <div class="notif-item">
+                  <span class="notif-icon">🛡️</span>
+                  <div class="notif-text">
+                    <strong>Model Re-trained</strong>
+                    <small>Random Forest CIC-IDS2017 · 98.2% acc</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Pill -->
+          <div class="user-pill" onclick="toggleUserDropdown()">
+            <div class="user-avatar">S</div>
+            <span class="user-name">Shreya</span>
+            <span class="dropdown-arrow">▼</span>
+
+            <div id="user-menu-dropdown" class="dropdown-panel user-dropdown">
+              <div class="dropdown-header">
+                <strong>Shreya Patil</strong>
+                <small>shreya@example.com</small>
+              </div>
+              <button class="dropdown-action" onclick="switchAppTab('settings')">⚙️ Account Settings</button>
+              <button class="dropdown-action text-danger" onclick="openLogoutModal()">🚪 Logout</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Subview Container -->
+      <div id="app-content" class="app-content-body">
+
+        <!-- =================================================================== -->
+        <!-- 4. DASHBOARD (Screen 4 in Mockup)                                   -->
+        <!-- =================================================================== -->
+        <section id="subview-dashboard" class="app-subview active">
+          <!-- Clean Slate Welcome Banner for Newly Registered User -->
+          <div id="new-user-welcome-banner" class="new-user-banner" style="display: none;">
+            <div class="banner-badge">✨ New Account Initialized</div>
+            <h3 id="banner-user-title">Welcome to NetGuard AI!</h3>
+            <p>Your security account has been registered with a clean slate (0 packets captured, 0 intrusions detected). To analyze network flows with our Random Forest model and populate your charts and telemetry, upload traffic CSV data or launch a live stream.</p>
+            <div class="banner-actions">
+              <button class="btn btn-primary btn-sm" onclick="switchAppTab('upload-data')">
+                📤 Upload Traffic CSV
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="startLiveStreamFromBanner()">
+                ⚡ Start Live Packet Capture
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="loadDemoDataForUser()">
+                📊 Load Demo Dataset (Preview)
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Stat Cards -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Total Packets</span>
+                <span class="stat-icon-wrap pink">📊</span>
+              </div>
+              <div class="stat-value" id="stat-total-packets">12,547</div>
+              <div class="stat-sub positive">
+                <span>↑ 12%</span> <small>vs last hour</small>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Normal Traffic</span>
+                <span class="stat-icon-wrap green">🛡️</span>
+              </div>
+              <div class="stat-value" id="stat-normal-traffic">9,842</div>
+              <div class="stat-sub positive green-sub">
+                <span>↑ 81%</span> <small>traffic ratio</small>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Intrusions Detected</span>
+                <span class="stat-icon-wrap red">⚠️</span>
+              </div>
+              <div class="stat-value highlight-magenta" id="stat-intrusions">2,705</div>
+              <div class="stat-sub negative">
+                <span>↑ 15%</span> <small>mitigated</small>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Attack Types</span>
+                <span class="stat-icon-wrap purple">🧬</span>
+              </div>
+              <div class="stat-value" id="stat-attack-types">5</div>
+              <div class="stat-sub link-sub" onclick="switchAppTab('attack-analysis')">
+                <span>View Details →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row: 24h Line Chart + Attack Donut Chart -->
+          <div class="charts-row">
+            <!-- 24h Traffic Line Chart -->
+            <div class="chart-card flex-2">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-title">Network Traffic (Last 24 Hours)</h3>
+                  <p class="card-subtitle">Comparing normal traffic with flagged malicious intrusions</p>
+                </div>
+                <div class="chart-legend">
+                  <span class="legend-item"><span class="legend-dot cyan"></span> Normal</span>
+                  <span class="legend-item"><span class="legend-dot magenta"></span> Malicious</span>
+                </div>
+              </div>
+              <div class="canvas-container">
+                <canvas id="chart-traffic-line" height="230"></canvas>
+              </div>
+            </div>
+
+            <!-- Attack Distribution Donut Chart -->
+            <div class="chart-card flex-1">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-title">Attack Type Distribution</h3>
+                  <p class="card-subtitle">Categorization of blocked intrusions</p>
+                </div>
+              </div>
+              <div class="donut-chart-wrapper">
+                <div class="donut-canvas-holder">
+                  <canvas id="chart-attack-donut" width="190" height="190"></canvas>
+                  <div class="donut-center-stat">
+                    <span class="center-count">2,705</span>
+                    <span class="center-label">Intrusions</span>
+                  </div>
+                </div>
+                <div class="donut-legend-list">
+                  <div class="donut-legend-row"><span class="color-box" style="background:#FF1475"></span> DoS/DDoS <span class="val">32%</span></div>
+                  <div class="donut-legend-row"><span class="color-box" style="background:#00F5FF"></span> Port Scan <span class="val">24%</span></div>
+                  <div class="donut-legend-row"><span class="color-box" style="background:#A855F7"></span> Brute Force <span class="val">18%</span></div>
+                  <div class="donut-legend-row"><span class="color-box" style="background:#3B82F6"></span> Botnet <span class="val">14%</span></div>
+                  <div class="donut-legend-row"><span class="color-box" style="background:#F59E0B"></span> Web Attack <span class="val">8%</span></div>
+                  <div class="donut-legend-row"><span class="color-box" style="background:#6B7280"></span> Others <span class="val">4%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Alerts Table -->
+          <div class="table-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Recent Alerts</h3>
+                <p class="card-subtitle">Real-time flagged events requiring review</p>
+              </div>
+              <button class="btn-link" onclick="switchAppTab('detection-logs')">View All →</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Attack Type</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-recent-alerts-tbody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 5. LIVE TRAFFIC (Screen 5 in Mockup)                                -->
+        <!-- =================================================================== -->
+        <section id="subview-live-traffic" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Live Network Traffic</h2>
+              <p class="view-subtitle">Real-time monitoring of incoming and outgoing traffic.</p>
+            </div>
+            <div class="live-status-pill">
+              <span class="live-pulse"></span>
+              <span id="stream-status-text">Live</span>
+            </div>
+          </div>
+
+          <!-- 4 Telemetry KPIs -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-title">Packets/sec</div>
+              <div class="stat-value" id="kpi-packets-sec">1,245</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Data Transferred</div>
+              <div class="stat-value">65 MB</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Active Connections</div>
+              <div class="stat-value" id="kpi-active-conns">12</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Suspicious Flows</div>
+              <div class="stat-value highlight-magenta" id="kpi-suspicious">3</div>
+            </div>
+          </div>
+
+          <!-- Streaming Feed Card -->
+          <div class="table-card">
+            <div class="card-header-flex">
+              <h3 class="card-title">Live Traffic Feed</h3>
+              <div class="controls-group">
+                <div class="search-input-wrap">
+                  <span class="search-icon">🔍</span>
+                  <input type="text" id="live-search-input" placeholder="Search IP, type..." oninput="filterLiveFeed()">
+                </div>
+                <button id="btn-pause-feed" class="btn btn-outline btn-sm" onclick="toggleLiveFeed()">
+                  <span id="pause-icon">⏸</span> <span id="pause-btn-text">Pause</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Protocol</th>
+                    <th>Packet Size</th>
+                    <th>Prediction</th>
+                  </tr>
+                </thead>
+                <tbody id="live-feed-tbody">
+                  <!-- Live packets streaming in real-time -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 6. DETECTION LOGS (Screen 6 in Mockup)                              -->
+        <!-- =================================================================== -->
+        <section id="subview-detection-logs" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Detection Logs</h2>
+              <p class="view-subtitle">View and search all detected intrusions.</p>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-card">
+            <div class="filter-grid">
+              <div class="filter-item">
+                <label>Attack Type</label>
+                <select id="filter-attack-type" class="form-control">
+                  <option value="All">All</option>
+                  <option value="DoS">DoS / DDoS</option>
+                  <option value="Port Scan">Port Scan</option>
+                  <option value="Brute Force">Brute Force</option>
+                  <option value="Web Attack">Web Attack</option>
+                  <option value="Botnet">Botnet</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label>Severity</label>
+                <select id="filter-severity" class="form-control">
+                  <option value="All">All</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label>Start Date</label>
+                <input type="date" id="filter-start-date" class="form-control" value="2025-09-01">
+              </div>
+
+              <div class="filter-item">
+                <label>End Date</label>
+                <input type="date" id="filter-end-date" class="form-control" value="2025-09-10">
+              </div>
+
+              <div class="filter-action">
+                <button class="btn btn-primary" onclick="applyLogsFilter()">Apply</button>
+                <button class="btn btn-outline" onclick="resetLogsFilter()">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logs Table -->
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Attack Type</th>
+                    <th>Severity</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="detection-logs-tbody">
+                  <!-- Populated from API -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination Bar matching mockup < 1 2 3 4 5 > -->
+            <div class="pagination-bar">
+              <button class="page-btn" onclick="changeLogsPage(-1)">‹</button>
+              <button class="page-btn active" onclick="setLogsPage(1)">1</button>
+              <button class="page-btn" onclick="setLogsPage(2)">2</button>
+              <button class="page-btn" onclick="setLogsPage(3)">3</button>
+              <button class="page-btn" onclick="setLogsPage(4)">4</button>
+              <button class="page-btn" onclick="setLogsPage(5)">5</button>
+              <button class="page-btn" onclick="changeLogsPage(1)">›</button>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 7. ATTACK ANALYSIS (Screen 7 in Mockup)                             -->
+        <!-- =================================================================== -->
+        <section id="subview-attack-analysis" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Attack Analysis</h2>
+              <p class="view-subtitle">Detailed insights into different types of attacks.</p>
+            </div>
+            <div class="range-selector">
+              <select class="form-control" id="analysis-range-select" onchange="updateAttackAnalysis()">
+                <option value="7">Last 7 Days</option>
+                <option value="30">Last 30 Days</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="charts-row">
+            <!-- Attacks Over Time Bar Chart -->
+            <div class="chart-card flex-2">
+              <div class="card-header-flex">
+                <h3 class="card-title">Attacks Over Time</h3>
+                <div class="chart-legend-wrap">
+                  <span class="legend-item"><span class="legend-dot" style="background:#FF1475"></span> DoS</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#00F5FF"></span> Port Scan</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#A855F7"></span> Brute Force</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#3B82F6"></span> Botnet</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#F59E0B"></span> Web Attack</span>
+                </div>
+              </div>
+              <div class="canvas-container">
+                <canvas id="chart-attacks-over-time" height="240"></canvas>
+              </div>
+            </div>
+
+            <!-- Attack Type Breakdown Table with Progress Bars -->
+            <div class="chart-card flex-1">
+              <h3 class="card-title">Attack Type Breakdown</h3>
+              <p class="card-subtitle">Distribution across 2,705 intrusions</p>
+
+              <div class="breakdown-list">
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#FF1475"></span> DoS/DDoS</span>
+                    <span class="b-count">864</span>
+                    <span class="b-pct">32%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 32%; background: #FF1475;"></div></div>
+                </div>
+
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#00F5FF"></span> Port Scan</span>
+                    <span class="b-count">649</span>
+                    <span class="b-pct">24%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 24%; background: #00F5FF;"></div></div>
+                </div>
+
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#A855F7"></span> Brute Force</span>
+                    <span class="b-count">487</span>
+                    <span class="b-pct">18%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 18%; background: #A855F7;"></div></div>
+                </div>
+
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#3B82F6"></span> Botnet</span>
+                    <span class="b-count">378</span>
+                    <span class="b-pct">14%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 14%; background: #3B82F6;"></div></div>
+                </div>
+
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#F59E0B"></span> Web Attack</span>
+                    <span class="b-count">216</span>
+                    <span class="b-pct">8%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 8%; background: #F59E0B;"></div></div>
+                </div>
+
+                <div class="breakdown-row">
+                  <div class="b-info">
+                    <span class="b-name"><span class="b-dot" style="background:#6B7280"></span> Others</span>
+                    <span class="b-count">111</span>
+                    <span class="b-pct">4%</span>
+                  </div>
+                  <div class="progress-bar-wrap"><div class="progress-fill" style="width: 4%; background: #6B7280;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 8. MODEL PERFORMANCE (Screen 8 in Mockup)                           -->
+        <!-- =================================================================== -->
+        <section id="subview-model-performance" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Model Performance</h2>
+              <p class="view-subtitle">Evaluation metrics of our ML model (Random Forest / CIC-IDS2017).</p>
+            </div>
+          </div>
+
+          <!-- 4 KPI Cards Matching Mockup -->
+          <div class="stats-row">
+            <div class="stat-card model-metric-card">
+              <div class="metric-icon-wrap" style="color: #10B981;">🎯</div>
+              <div class="stat-title">Accuracy</div>
+              <div class="stat-value">98.2%</div>
+            </div>
+
+            <div class="stat-card model-metric-card">
+              <div class="metric-icon-wrap" style="color: #FF1475;">📊</div>
+              <div class="stat-title">Precision</div>
+              <div class="stat-value">97.6%</div>
+            </div>
+
+            <div class="stat-card model-metric-card">
+              <div class="metric-icon-wrap" style="color: #00F5FF;">🔄</div>
+              <div class="stat-title">Recall</div>
+              <div class="stat-value">96.8%</div>
+            </div>
+
+            <div class="stat-card model-metric-card">
+              <div class="metric-icon-wrap" style="color: #A855F7;">🛡️</div>
+              <div class="stat-title">F1-Score</div>
+              <div class="stat-value">97.2%</div>
+            </div>
+          </div>
+
+          <!-- Confusion Matrix & ROC Curve Row -->
+          <div class="charts-row">
+            <!-- Confusion Matrix Heatmap -->
+            <div class="chart-card flex-1">
+              <h3 class="card-title">Confusion Matrix</h3>
+              <p class="card-subtitle">Actual vs Predicted classification results</p>
+
+              <div class="matrix-container">
+                <div class="matrix-wrapper">
+                  <div class="y-label-header">Actual</div>
+                  <div class="matrix-grid">
+                    <div class="grid-header-cell"></div>
+                    <div class="grid-col-header">Normal</div>
+                    <div class="grid-col-header">Attack</div>
+
+                    <div class="grid-row-header">Normal</div>
+                    <div class="cm-cell cm-tn">
+                      <span class="cm-count">4821</span>
+                      <small class="cm-type">TN</small>
+                    </div>
+                    <div class="cm-cell cm-fp">
+                      <span class="cm-count">179</span>
+                      <small class="cm-type">FP</small>
+                    </div>
+
+                    <div class="grid-row-header">Attack</div>
+                    <div class="cm-cell cm-fn">
+                      <span class="cm-count">138</span>
+                      <small class="cm-type">FN</small>
+                    </div>
+                    <div class="cm-cell cm-tp">
+                      <span class="cm-count">4362</span>
+                      <small class="cm-type">TP</small>
+                    </div>
+                  </div>
+                  <div class="x-label-footer">Predicted</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROC Curve Chart -->
+            <div class="chart-card flex-1">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-title">ROC Curve</h3>
+                  <p class="card-subtitle">True Positive Rate vs False Positive Rate</p>
+                </div>
+                <div class="chart-legend">
+                  <span class="legend-item"><span class="legend-dot magenta"></span> ROC Curve (AUC = 0.98)</span>
+                  <span class="legend-item"><span class="legend-dot dotted"></span> Random Classifier</span>
+                </div>
+              </div>
+              <div class="canvas-container">
+                <canvas id="chart-roc-curve" height="230"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 9. UPLOAD DATA (Screen 9 in Mockup)                                 -->
+        <!-- =================================================================== -->
+        <section id="subview-upload-data" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Upload Network Traffic Data</h2>
+              <p class="view-subtitle">Upload a CSV file to detect intrusions.</p>
+            </div>
+          </div>
+
+          <!-- Drag and Drop Zone -->
+          <div class="upload-box-card" id="drop-zone">
+            <div class="upload-icon-circle">
+              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#FF1475" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+            </div>
+            <h3>Drag & drop your CSV file here</h3>
+            <p class="text-muted">or</p>
+            <input type="file" id="csv-file-input" accept=".csv" style="display:none;" onchange="handleFileUpload(this.files[0])">
+            <button class="btn btn-primary" onclick="document.getElementById('csv-file-input').click()">Browse Files</button>
+            <p class="upload-hint">Supported format: CSV (max 50MB)</p>
+
+            <div class="sample-actions-row">
+              <button class="btn btn-secondary btn-sm" onclick="loadSampleDataset()">
+                ✨ Load Sample CIC-IDS2017 Dataset
+              </button>
+              <a href="/api/sample-csv" class="btn btn-outline btn-sm">
+                ⬇️ Download Sample Template CSV
+              </a>
+            </div>
+          </div>
+
+          <!-- Sample Format Preview Card -->
+          <div class="table-card">
+            <h3 class="card-title">Sample Format</h3>
+            <p class="card-subtitle">Expected features for intrusion detection classification</p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>duration</th>
+                    <th>protocol</th>
+                    <th>src_bytes</th>
+                    <th>dst_bytes</th>
+                    <th>label</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12</td>
+                    <td>TCP</td>
+                    <td>1340</td>
+                    <td>5409</td>
+                    <td><span class="badge badge-success">Normal</span></td>
+                  </tr>
+                  <tr>
+                    <td>45</td>
+                    <td>UDP</td>
+                    <td>48000</td>
+                    <td>0</td>
+                    <td><span class="badge badge-danger">DoS</span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>TCP</td>
+                    <td>44</td>
+                    <td>0</td>
+                    <td><span class="badge badge-warning">Port Scan</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Upload Results (Visible after processing) -->
+          <div id="upload-results-container" class="table-card" style="display:none;">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Classification Results</h3>
+                <p class="card-subtitle" id="upload-summary-subtitle">ML Model successfully classified traffic flows</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="exportClassifiedCSV()">Download Results CSV</button>
+            </div>
+
+            <!-- Mini stats for upload -->
+            <div class="stats-row" style="margin-bottom: 20px;">
+              <div class="stat-card">
+                <div class="stat-title">Total Rows</div>
+                <div class="stat-value" id="res-total-rows">50</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">Normal Flows</div>
+                <div class="stat-value green-sub" id="res-normal-rows">38</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">Threats Flagged</div>
+                <div class="stat-value highlight-magenta" id="res-attack-rows">12</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">Attack Rate</div>
+                <div class="stat-value" id="res-attack-rate">24%</div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Duration (µs)</th>
+                    <th>Protocol</th>
+                    <th>Src Bytes</th>
+                    <th>Dst Bytes</th>
+                    <th>Prediction</th>
+                    <th>Confidence</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="upload-results-tbody">
+                  <!-- Generated from uploaded file -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 10. REPORTS (Screen 10 in Mockup)                                   -->
+        <!-- =================================================================== -->
+        <section id="subview-reports" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Reports</h2>
+              <p class="view-subtitle">Generate and download security reports.</p>
+            </div>
+          </div>
+
+          <!-- Date Filter Card with Pink Generate Button -->
+          <div class="filter-card">
+            <div class="filter-grid">
+              <div class="filter-item">
+                <label>Start Date</label>
+                <input type="date" id="report-start-date" class="form-control" value="2025-09-01">
+              </div>
+              <div class="filter-item">
+                <label>End Date</label>
+                <input type="date" id="report-end-date" class="form-control" value="2025-09-10">
+              </div>
+              <div class="filter-action">
+                <button class="btn btn-primary" onclick="generateCustomReport()">Generate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Available Reports List -->
+          <div class="table-card">
+            <h3 class="card-title">Available Reports</h3>
+            <p class="card-subtitle">Standardized compliance and telemetry downloads</p>
+
+            <div class="reports-list">
+              <!-- Report 1 -->
+              <div class="report-item">
+                <div class="report-icon-box" style="background: rgba(0, 245, 255, 0.1); color: #00F5FF;">
+                  📄
+                </div>
+                <div class="report-details">
+                  <h4>Daily Traffic Report</h4>
+                  <p>Summary of network traffic, flow volumes, and detections.</p>
+                </div>
+                <a href="/api/reports/download?type=daily" class="btn btn-outline btn-sm">Download</a>
+              </div>
+
+              <!-- Report 2 -->
+              <div class="report-item">
+                <div class="report-icon-box" style="background: rgba(255, 20, 117, 0.1); color: #FF1475;">
+                  🚨
+                </div>
+                <div class="report-details">
+                  <h4>Attack Summary Report</h4>
+                  <p>Detailed analysis of detected attacks, source origins, and mitigation logs.</p>
+                </div>
+                <a href="/api/reports/download?type=attacks" class="btn btn-outline btn-sm">Download</a>
+              </div>
+
+              <!-- Report 3 -->
+              <div class="report-item">
+                <div class="report-icon-box" style="background: rgba(245, 158, 11, 0.1); color: #F59E0B;">
+                  📊
+                </div>
+                <div class="report-details">
+                  <h4>Model Performance Report</h4>
+                  <p>Evaluation metrics, feature importances, and ROC analysis.</p>
+                </div>
+                <a href="/api/reports/download?type=model" class="btn btn-outline btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- 11. SETTINGS / PROFILE (Screen 11 in Mockup)                         -->
+        <!-- =================================================================== -->
+        <section id="subview-settings" class="app-subview">
+          <div class="view-header-row">
+            <div>
+              <h2 class="view-title">Settings / Profile</h2>
+              <p class="view-subtitle">Manage user account and system preferences.</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <!-- Left Card: Profile Settings -->
+            <div class="table-card">
+              <h3 class="card-title">Profile Settings</h3>
+              <p class="card-subtitle">User identity and authentication credentials</p>
+
+              <div class="form-group" style="margin-top: 20px;">
+                <label>Full Name</label>
+                <input type="text" id="setting-name" class="form-control" value="Shreya Patil">
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="setting-email" class="form-control" value="shreya@example.com">
+              </div>
+
+              <div class="form-actions" style="margin-top: 25px;">
+                <button class="btn btn-primary" onclick="openPasswordModal()">Change Password</button>
+              </div>
+            </div>
+
+            <!-- Right Card: Application Settings -->
+            <div class="table-card">
+              <h3 class="card-title">Application Settings</h3>
+              <p class="card-subtitle">Interface appearance and incident notification alerts</p>
+
+              <!-- Theme Toggle -->
+              <div class="form-group" style="margin-top: 20px;">
+                <label>Theme</label>
+                <div class="theme-options">
+                  <label class="radio-label">
+                    <input type="radio" name="theme-choice" value="light" checked onchange="setTheme('light')">
+                    <span>☀️ Light</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="theme-choice" value="dark" onchange="setTheme('dark')">
+                    <span>🌙 Dark</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="theme-choice" value="system" onchange="setTheme('system')">
+                    <span>💻 System</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Notifications Switches -->
+              <div class="form-group" style="margin-top: 20px;">
+                <label>Notifications</label>
+                <div class="toggle-list">
+                  <div class="toggle-row">
+                    <span>Email Alerts</span>
+                    <label class="switch">
+                      <input type="checkbox" checked id="notif-email">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-row">
+                    <span>Push Notifications</span>
+                    <label class="switch">
+                      <input type="checkbox" checked id="notif-push">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-row">
+                    <span>Detection Alerts</span>
+                    <label class="switch">
+                      <input type="checkbox" checked id="notif-detection">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions" style="margin-top: 30px;">
+                <button class="btn btn-primary" onclick="saveSettings()">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 12. LOGOUT CONFIRMATION MODAL (Screen 12 in Mockup)                       -->
+  <!-- ========================================================================= -->
+  <div id="modal-logout" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon-circle">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#FF1475" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+        </svg>
+      </div>
+      <h3>Are you sure you want to logout?</h3>
+      <p class="modal-desc">You will need to login again to access your account.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closeLogoutModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ATTACK DETAIL INSPECTION MODAL -->
+  <div id="modal-attack-detail" class="modal-overlay">
+    <div class="modal-card modal-lg">
+      <div class="modal-header-flex">
+        <div class="brand-logo small">
+          <div class="logo-icon small">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FF1475" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 id="modal-detail-title">Intrusion Incident Inspection</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeDetailModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-detail-body">
+        <!-- Dynamically rendered incident details -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closeDetailModal()">Close</button>
+        <button class="btn btn-primary" id="btn-block-ip" onclick="blockIncidentIP()">Block Source IP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORD MODAL -->
+  <div id="modal-password" class="modal-overlay">
+    <div class="modal-card">
+      <h3>Change Account Password</h3>
+      <div class="form-group" style="margin-top: 15px;">
+        <label>Current Password</label>
+        <input type="password" class="form-control" placeholder="••••••••">
+      </div>
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" class="form-control" placeholder="••••••••">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closePasswordModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="savePassword()">Update Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
